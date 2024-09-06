@@ -14,4 +14,8 @@ public class UserService {
     public List<Object[]> getHello() {
         return userRepository.custom();
     }
+    public Boolean login(String username, String password) {
+        if(username.equals("abc") && password.equals("123"))return true ;
+        return  false ;
+    }
 }

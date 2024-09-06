@@ -24,6 +24,12 @@ public class User {
     @Column(name = "name", nullable = false)
     String userName;
 
+    @Column(name = "password", nullable = false)
+    String password;
+
+    @Column(name = "role", nullable = false)
+    String role;
+
     @OneToMany(mappedBy = "user")
     List<GirlFriend> girlFriends ;
 }

@@ -1,11 +1,9 @@
 package org.example.java2024.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.java2024.dto.UserFindGirlFrienddto;
+import org.example.java2024.service.AuthenicationService;
 import org.example.java2024.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -16,8 +14,17 @@ import java.util.Map;
 public class UserController {
 
     private  final UserService userService ;
+    private  final AuthenicationService authenicationService ;
     @GetMapping("/test")
-    List<Object[]> getMyInfo() {
-        return this.userService.getHello() ;
+    String getMyInfo() {
+        return "hello" ;
+    }
+
+    @PostMapping("/login")
+    String login(@RequestBody Map<String, String> body) {
+        String username = body.get("username");
+        String password = body.get("password");
+        System.out.println(username + " " + password );
+        return this.authenicationService.authenticate(username, password);
     }
 }
