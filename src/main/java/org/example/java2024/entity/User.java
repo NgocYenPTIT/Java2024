@@ -16,6 +16,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -30,6 +31,6 @@ public class User {
     @Column(name = "role", nullable = false)
     String role;
 
-    @OneToMany(mappedBy = "user")
-    List<GirlFriend> girlFriends ;
+    @OneToMany(mappedBy = "user") // Thêm mối quan hệ với PhoneNumber
+    List<PhoneNumber> phoneNumbers;
 }

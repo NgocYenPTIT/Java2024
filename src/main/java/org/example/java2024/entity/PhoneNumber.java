@@ -1,27 +1,27 @@
 package org.example.java2024.entity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table(name = "girl_friends")
+@Table(name = "phone_numbers")
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class GirlFriend {
+public class PhoneNumber {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     int id;
 
-    @Column(name = "name", nullable = false)
-    String userName;
+    @Column(name = "phone_number", nullable = false)
+    String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    User user;
+    User user; // Mối quan hệ với User
 }
+
